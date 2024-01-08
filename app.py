@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, request
+from flask import Flask, request, render_template, jsonify
 import logging
 import sys
 
@@ -21,11 +21,10 @@ def get_message():
     # # TODO:
     # # далее я буду формировать новый json
     # res = requests.post('/api/add_message/1234', json={"mytext": "lalala"})
-
-    return content
+    return jsonify(**request.json)
 
 
 if __name__ == '__main__':
+    app.debug = True
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     app.run(host='0.0.0.0', port=3000)
-
