@@ -22,6 +22,8 @@ def get_message():
     # # далее я буду формировать новый json
     # res = requests.post('/api/add_message/1234', json={"mytext": "lalala"})
 
+    return content
+
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
