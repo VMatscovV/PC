@@ -1,5 +1,7 @@
 import requests
 from flask import Flask, request
+import logging
+import sys
 
 app = Flask(__name__)
 
@@ -14,17 +16,14 @@ def about():
 def get_message():
     content = request.json
     print(content)
+    logging.info(content)
     #     здесь я буду писать логику, и доставать данные из JSON, который пришлет миша
-    # TODO:
-    # далее я буду формировать новый json
-    res = requests.post('/api/add_message/1234', json={"mytext": "lalala"})
+    # # TODO:
+    # # далее я буду формировать новый json
+    # res = requests.post('/api/add_message/1234', json={"mytext": "lalala"})
 
-
-# @app.route('/api/add_message/<uuid>', methods=['GET', 'POST'])
-# def add_message(uuid):
-#     content = request.json
-#     print(content['mytext'])
-#     return jsonify({"uuid":uuid})
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     app.run(host='0.0.0.0', port=3000)
+
