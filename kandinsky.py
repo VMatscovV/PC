@@ -55,18 +55,18 @@ def gen(prom, dirr = "res"):
     uuid = api.generate(prom, model_id)
     images = api.check_generation(uuid)
 
-    # -------Здесь image_base64 - это строка с данными изображения в формате base64
-
     image_base64 = images[0]
 
-    # -------Декодируем строку base64 в бинарные данные
+    # # -------Декодируем строку base64 в бинарные данные
+    #
+    # image_data = base64.b64decode(image_base64)
+    #
+    # # -------Открываем файл для записи бинарных данных изображения
+    #
+    # with open(f"logo.jpg", "wb") as file:
+    #     file.write(image_data)
 
-    image_data = base64.b64decode(image_base64)
-
-    # -------Открываем файл для записи бинарных данных изображения
-
-    with open(f"logo.jpg", "wb") as file:
-        file.write(image_data)
+    return image_base64
 
 
 def logo(market):
@@ -76,5 +76,3 @@ def logo(market):
 
 def lite_image(prom):
     return gen(prom.replace("\n", " "),)
-
-logo("Грузоперевозки")
