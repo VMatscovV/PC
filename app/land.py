@@ -1,14 +1,11 @@
-from flask import Flask, request, jsonify
-import logging
-import sys
-from flask_cors import CORS
+from models.giga import getatt, getmarket
+from models.kandinsky import logo
+from app import app
+
+from flask import request, jsonify
+
 import json
-
-from giga import getatt, getmarket
-from kandinsky import logo
-
-app = Flask(__name__)
-cors = CORS(app, resources={r"/get-campaign-info": {"origins": "*"}})
+import logging
 
 
 @app.route('/')
@@ -25,12 +22,11 @@ def get_message():
     try:
         json_data = json.dumps(content)
         content = json.loads(json_data)
-        market = content['industry']
+        market = content[0]
 
     except:
         print("json parsing error")
         raise ValueError
-
 
     result = {"losung": getatt(market), "logo": logo(market), "tam": getmarket(market)}
 
@@ -38,9 +34,4 @@ def get_message():
 
 
 if __name__ == '__main__':
-
-    app.debug = True
-    logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     app.run(host='0.0.0.0', port=3000)
-
-
