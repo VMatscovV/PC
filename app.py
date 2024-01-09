@@ -20,10 +20,17 @@ def about():
 @app.route('/get-campaign-info', methods=['POST'])
 def get_message():
     content = request.json
-    print(content)
     logging.info(content)
 
-    market = "виноделия"
+    try:
+        json_data = json.dumps(content)
+        content = json.loads(json_data)
+        market = content['industry']
+
+    except:
+        print("json parsing error")
+        raise ValueError
+
 
     result = {"losung": getatt(market), "logo": logo(market), "tam": getmarket(market)}
 
