@@ -1,15 +1,14 @@
-import requests
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, jsonify
 import logging
 import sys
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 import json
 
 from giga import getatt, getmarket
 from kandinsky import logo
 
 app = Flask(__name__)
-CORS(app, resources={r"*": {"origins": "*"}})
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 
 @app.route('/')
