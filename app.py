@@ -9,7 +9,7 @@ from giga import getatt, getmarket
 from kandinsky import logo
 
 app = Flask(__name__)
-CORS(app, support_credentials=True)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 @app.route('/')
@@ -19,7 +19,7 @@ def about():
 
 # основной метод в который будет ходить Миша
 @app.route('/get-campaign-info', methods=['POST'])
-@cross_origin(supports_credentials=True)
+@cross_origin()
 def get_message():
     content = request.json
     print(content)
