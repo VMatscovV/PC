@@ -22,7 +22,7 @@ def get_message():
     try:
         json_data = json.dumps(content)
         content = json.loads(json_data)
-        market = content['main']
+        market = content['industry']
 
     except:
         print("json parsing error")
