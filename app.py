@@ -19,7 +19,6 @@ def about():
 
 # основной метод в который будет ходить Миша
 @app.route('/get-campaign-info', methods=['POST'])
-@cross_origin()
 def get_message():
     content = request.json
     print(content)
