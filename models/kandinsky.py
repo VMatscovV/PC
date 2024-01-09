@@ -70,7 +70,7 @@ def gen(prom, dirr="res"):
     # with open(f"logo.jpg", "wb") as file:
     #     file.write(image_data)
 
-    # return image_base64
+    return image_base64
 
 
 def logo(market):

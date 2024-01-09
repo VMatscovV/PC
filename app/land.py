@@ -22,7 +22,7 @@ def get_message():
     try:
         json_data = json.dumps(content)
         content = json.loads(json_data)
-        market = content[0]
+        market = content['main']
 
     except:
         print("json parsing error")
@@ -31,7 +31,3 @@ def get_message():
     result = {"losung": getatt(market), "logo": logo(market), "tam": getmarket(market)}
 
     return jsonify(**result)
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000)
