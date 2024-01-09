@@ -9,7 +9,7 @@ from giga import getatt, getmarket
 from kandinsky import logo
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 @app.route('/')
