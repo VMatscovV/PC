@@ -8,7 +8,7 @@ from giga import getatt, getmarket
 from kandinsky import logo
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"*": {"origins": "*"}})
+cors = CORS(app, resources={r"/get-campaign-info": {"origins": "*"}})
 
 
 @app.route('/')
@@ -23,9 +23,9 @@ def get_message():
     print(content)
     logging.info(content)
 
-    market = "Виноделия"
+    market = "виноделия"
 
-    result = {"Losung": getatt(market), "Logo": logo(market), "Tam": getmarket(market)}
+    result = {"losung": getatt(market), "logo": logo(market), "tam": getmarket(market)}
 
     return jsonify(**result)
 
